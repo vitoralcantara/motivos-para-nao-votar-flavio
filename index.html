@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossiê e Fatos Verificados | Curadoria Jornalística</title>
+  <meta name="description" content="Arquivo de fatos apurados, votações e declarações públicas fundamentados estritamente em reportagens da imprensa profissional.">
+  
+  <!-- Open Graph / Redes Sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dossiê e Fatos Verificados | Curadoria Jornalística">
+  <meta property="og:description" content="Arquivo de fatos apurados, votações e declarações públicas fundamentados estritamente em reportagens da imprensa profissional.">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="site-header">
+    <div class="container">
+      <div class="site-badge">
+        <span class="site-badge-dot"></span>
+        Curadoria Factual
+      </div>
+      <h1 class="site-title">
+        Por que <span>não votar</span> em Flávio
+      </h1>
+      <p class="site-subtitle">
+        Registro documentado de histórico político, votações, investigações e declarações públicas, baseado exclusivamente em veículos de imprensa profissional.
+      </p>
+      
+      <div class="site-stats-banner">
+        <span>Fatos documentados: <strong id="total-topics-count">1</strong></span>
+        <span>•</span>
+        <span>Critério: <strong>Apenas grandes jornais</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filtros e Busca Fixos -->
+  <section class="controls-section" aria-label="Filtros e Busca">
+    <div class="container">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Pesquisar por tema, palavra-chave ou notícia..." 
+          autocomplete="off"
+        >
+        <button id="search-clear-btn" class="search-clear-btn" aria-label="Limpar pesquisa">✕</button>
+      </div>
+
+      <!-- Pílulas de Categoria -->
+      <nav id="category-pills" class="category-pills" aria-label="Categorias de tópicos"></nav>
+    </div>
+  </section>
+
+  <!-- Lista de Tópicos (Feed) -->
+  <main class="container">
+    <div class="feed-header">
+      <span id="feed-count">Carregando tópicos...</span>
+      <span>Ordem: Mais recentes</span>
+    </div>
+
+    <section id="feed-list" class="feed-list" aria-live="polite">
+      <!-- Cards renderizados via JavaScript através de data.js -->
+    </section>
+  </main>
+
+  <!-- Toast de Notificação -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Este site é um dossiê informativo independente para fundamentação do voto consciente.</p>
+      <p>Todas as informações são acompanhadas de data, veículo e link direto para a fonte jornalística original.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
