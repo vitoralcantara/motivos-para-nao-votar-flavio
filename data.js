@@ -53,6 +53,22 @@ const topicsData = [
     quote: "Áudios interceptados pela PF registraram cobranças diretas do senador por repasses milionários a banqueiro."
   },
   {
+    id: "compra-51-imoveis-dinheiro-vivo",
+    title: "Investigação do UOL e JN: 51 imóveis da família Bolsonaro foram pagos com dinheiro vivo",
+    category: "Transparência",
+    date: "31/08/2022",
+    sourceName: "G1 / Jornal Nacional (UOL)",
+    sourceUrl: "https://g1.globo.com/jornal-nacional/noticia/2022/08/31/reportagem-do-uol-revela-que-51-imoveis-comprados-pela-familia-bolsonaro-foram-pagos-em-dinheiro-vivo.ghtml",
+    bullets: [
+      "Levantamento em mais de mil páginas de registros de cartório revelou que de 107 imóveis negociados pela família Bolsonaro desde os anos 1990, ao menos 51 foram adquiridos total ou parcialmente com uso de dinheiro em espécie.",
+      "O montante pago em moeda corrente somou quase R$ 26 milhões em valores corrigidos pela inflação na época da apuração.",
+      "Ao menos 25 imóveis foram comprados em contextos que suscitaram investigações do Ministério Público (MP-RJ e MPDFT), abrangendo transações imobiliárias de Flávio investigadas nas apurações da Alerj.",
+      "Especialistas ressaltaram que, embora pagar em dinheiro vivo não configure crime por si só, transações volumosas em espécie são meios usuais em esquemas de lavagem e ocultação de patrimônio devido à dificuldade de rastreio financeiro."
+    ],
+    fullContext: "Investigação jornalística do portal UOL com ampla cobertura do Jornal Nacional (TV Globo) revelou que quase metade do patrimônio imobiliário adquirido pelo clã Bolsonaro ao longo de três décadas foi quitada total ou parcialmente em dinheiro vivo. A apuração consultou escrituras em cartórios de 12 cidades. Entre os 107 imóveis transacionados, ao menos 51 envolveram pagamentos em moeda corrente, alcançando quase R$ 26 milhões corrigidos. O levantamento detalhou que 25 dessas compras ensejaram apurações do Ministério Público sobre desvios e evolução patrimonial incompatível, a exemplo de aquisições de salas comerciais e apartamentos realizadas por Flávio Bolsonaro durante seus mandatos como deputado estadual.",
+    quote: "Levantamento cartorial revelou que quase metade dos imóveis da família foi paga com dinheiro em espécie."
+  },
+  {
     id: "caso-rachadinha-alerj",
     title: "Caso das 'rachadinhas' na Alerj: denúncia do MP-RJ por desvio de salários e anulação por vícios processuais",
     category: "Investigações",
