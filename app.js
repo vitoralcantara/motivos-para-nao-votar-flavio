@@ -70,6 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function getFaviconUrl(url) {
+    try {
+      const hostname = new URL(url).hostname;
+      return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
+    } catch (e) {
+      return "";
+    }
+  }
+
   function renderFeed() {
     const items = getFilteredData();
 
@@ -91,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     feedContainer.innerHTML = items
       .map((item) => {
         const catSlug = getCategorySlug(item.category);
+        const faviconUrl = getFaviconUrl(item.sourceUrl);
         return `
         <article class="topic-card category-${catSlug}" id="${item.id}" data-id="${item.id}">
           <div class="card-meta">
@@ -115,7 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="card-footer">
             <a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer" class="source-badge">
-              <span class="source-badge-icon">📰</span>
+              <img 
+                src="${faviconUrl}" 
+                alt="" 
+                class="source-favicon" 
+                loading="lazy" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
+              >
+              <span class="source-fallback-icon" style="display:none;">📰</span>
               <span><strong>Fonte:</strong> ${item.sourceName}</span>
               <span class="source-badge-link-icon">↗</span>
             </a>
