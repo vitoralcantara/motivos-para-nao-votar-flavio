@@ -18,14 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // Gera categorias dinâmicas
   const categories = ["Todos", ...new Set(topicsData.map((item) => item.category))];
 
+  function getCategorySlug(category) {
+    if (!category || category === "Todos") return "todos";
+    return category
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
   function renderPills() {
     pillsContainer.innerHTML = categories
       .map(
-        (cat) => `
-        <button class="pill-btn ${cat === activeCategory ? "active" : ""}" data-category="${cat}">
-          ${cat}
-        </button>
-      `
+        (cat) => {
+          const slug = getCategorySlug(cat);
+          return `
+          <button class="pill-btn pill-${slug} ${cat === activeCategory ? "active" : ""}" data-category="${cat}">
+            <span class="pill-dot">●</span>
+            <span>${cat}</span>
+          </button>
+        `;
+        }
       )
       .join("");
 
@@ -76,8 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     feedContainer.innerHTML = items
       .map((item) => {
+        const catSlug = getCategorySlug(item.category);
         return `
-        <article class="topic-card" id="${item.id}" data-id="${item.id}">
+        <article class="topic-card category-${catSlug}" id="${item.id}" data-id="${item.id}">
           <div class="card-meta">
             <span class="card-category-badge">
               <span>●</span> ${item.category}

@@ -196,6 +196,9 @@ body {
 }
 
 .pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
@@ -208,6 +211,19 @@ body {
   transition: var(--transition);
 }
 
+.pill-dot {
+  font-size: 0.65rem;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.pill-btn.pill-todos .pill-dot { color: #94a3b8; }
+.pill-btn.pill-investigacoes .pill-dot { color: #f59e0b; }
+.pill-btn.pill-transparencia .pill-dot { color: #06b6d4; }
+.pill-btn.pill-programas-sociais .pill-dot { color: #10b981; }
+.pill-btn.pill-votacoes .pill-dot { color: #8b5cf6; }
+.pill-btn.pill-declaracoes .pill-dot { color: #f43f5e; }
+
 .pill-btn:hover {
   border-color: var(--border-active);
   color: var(--text-primary);
@@ -218,6 +234,10 @@ body {
   color: var(--bg-primary);
   border-color: var(--text-primary);
   font-weight: 600;
+}
+
+.pill-btn.active .pill-dot {
+  color: var(--bg-primary);
 }
 
 /* Feed List */
@@ -240,6 +260,7 @@ body {
 .topic-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
+  border-left: 4px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   transition: var(--transition);
@@ -253,8 +274,102 @@ body {
 }
 
 .topic-card.highlight {
-  border-color: var(--accent-red);
+  border-color: var(--accent-red) !important;
   box-shadow: 0 0 0 2px var(--accent-red-glow), 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================
+   CORES POR CATEGORIA DE CARD
+   ========================================================== */
+
+/* 1. INVESTIGAÇÕES (Âmbar / Laranja) */
+.topic-card.category-investigacoes {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, var(--bg-card) 30%);
+}
+.topic-card.category-investigacoes:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.08);
+}
+.topic-card.category-investigacoes .card-category-badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.topic-card.category-investigacoes .card-bullets li::before {
+  color: #f59e0b;
+}
+
+/* 2. TRANSPARÊNCIA (Ciano / Azul Claro) */
+.topic-card.category-transparencia {
+  border-left-color: #06b6d4;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, var(--bg-card) 30%);
+}
+.topic-card.category-transparencia:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.08);
+}
+.topic-card.category-transparencia .card-category-badge {
+  background: rgba(6, 182, 212, 0.15);
+  color: #67e8f9;
+  border-color: rgba(6, 182, 212, 0.35);
+}
+.topic-card.category-transparencia .card-bullets li::before {
+  color: #06b6d4;
+}
+
+/* 3. PROGRAMAS SOCIAIS (Verde Esmeralda) */
+.topic-card.category-programas-sociais {
+  border-left-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--bg-card) 30%);
+}
+.topic-card.category-programas-sociais:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+}
+.topic-card.category-programas-sociais .card-category-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.topic-card.category-programas-sociais .card-bullets li::before {
+  color: #10b981;
+}
+
+/* 4. VOTAÇÕES NO CONGRESSO (Roxo / Violeta) */
+.topic-card.category-votacoes {
+  border-left-color: #8b5cf6;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, var(--bg-card) 30%);
+}
+.topic-card.category-votacoes:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
+}
+.topic-card.category-votacoes .card-category-badge {
+  background: rgba(139, 92, 246, 0.15);
+  color: #c4b5fd;
+  border-color: rgba(139, 92, 246, 0.35);
+}
+.topic-card.category-votacoes .card-bullets li::before {
+  color: #8b5cf6;
+}
+
+/* 5. DECLARAÇÕES & REDES (Rosa / Coral) */
+.topic-card.category-declaracoes {
+  border-left-color: #f43f5e;
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.05) 0%, var(--bg-card) 30%);
+}
+.topic-card.category-declaracoes:hover {
+  border-color: rgba(244, 63, 94, 0.4);
+  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.08);
+}
+.topic-card.category-declaracoes .card-category-badge {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fda4af;
+  border-color: rgba(244, 63, 94, 0.35);
+}
+.topic-card.category-declaracoes .card-bullets li::before {
+  color: #f43f5e;
 }
 
 /* Card Meta Header */
@@ -269,15 +384,16 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.75rem;
   background: var(--accent-blue-soft);
   color: #93c5fd;
   border: 1px solid rgba(59, 130, 246, 0.25);
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  transition: var(--transition);
 }
 
 .card-date {
