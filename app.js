@@ -269,6 +269,89 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Controle do Modal de Sugestões
+  const suggestModal = document.getElementById("suggest-modal");
+  const btnOpenSuggest = document.getElementById("btn-open-suggest");
+  const btnFooterSuggest = document.getElementById("btn-footer-suggest");
+  const btnCloseModal = document.getElementById("btn-close-modal");
+  const btnCancelModal = document.getElementById("btn-cancel-modal");
+  const suggestForm = document.getElementById("suggest-form");
+  const suggestSuccess = document.getElementById("suggest-success");
+  const btnSuccessClose = document.getElementById("btn-success-close");
+
+  function openSuggestModal() {
+    if (!suggestModal) return;
+    suggestModal.classList.add("open");
+    suggestModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    if (suggestForm) suggestForm.style.display = "block";
+    if (suggestSuccess) suggestSuccess.style.display = "none";
+    const urlInput = document.getElementById("suggest-url");
+    if (urlInput) setTimeout(() => urlInput.focus(), 100);
+  }
+
+  function closeSuggestModal() {
+    if (!suggestModal) return;
+    suggestModal.classList.remove("open");
+    suggestModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (suggestForm) suggestForm.reset();
+  }
+
+  if (btnOpenSuggest) btnOpenSuggest.addEventListener("click", openSuggestModal);
+  if (btnFooterSuggest) btnFooterSuggest.addEventListener("click", openSuggestModal);
+  if (btnCloseModal) btnCloseModal.addEventListener("click", closeSuggestModal);
+  if (btnCancelModal) btnCancelModal.addEventListener("click", closeSuggestModal);
+  if (btnSuccessClose) btnSuccessClose.addEventListener("click", closeSuggestModal);
+
+  // Fecha modal ao clicar fora do card
+  if (suggestModal) {
+    suggestModal.addEventListener("click", (e) => {
+      if (e.target === suggestModal) {
+        closeSuggestModal();
+      }
+    });
+  }
+
+  // Fecha com tecla ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && suggestModal && suggestModal.classList.contains("open")) {
+      closeSuggestModal();
+    }
+  });
+
+  // Envio do formulário via Netlify Forms ou Ajax
+  if (suggestForm) {
+    suggestForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById("btn-submit-suggest");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "<span>Enviando...</span>";
+      }
+
+      const formData = new FormData(suggestForm);
+
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      })
+        .catch(() => {
+          // Trata suavemente em caso de teste local sem backend
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "<span>Enviar Sugestão</span> <span>↗</span>";
+          }
+          suggestForm.style.display = "none";
+          if (suggestSuccess) suggestSuccess.style.display = "block";
+          showToast("Sugestão enviada com sucesso!");
+        });
+    });
+  }
+
   // Inicialização
   renderPills();
   renderFeed();

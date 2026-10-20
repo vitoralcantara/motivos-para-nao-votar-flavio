@@ -30,9 +30,14 @@
       </p>
       
       <div class="site-stats-banner">
-        <span>Fatos documentados: <strong id="total-topics-count">1</strong></span>
+        <span>Fatos documentados: <strong id="total-topics-count">6</strong></span>
         <span>•</span>
-        <span>Critério: <strong>Apenas grandes jornais</strong></span>
+        <span>Critério: <strong>Grandes jornais</strong></span>
+        <span>•</span>
+        <button id="btn-open-suggest" class="btn-suggest-trigger">
+          <span>💡</span>
+          <span>Sugerir Notícia</span>
+        </button>
       </div>
     </div>
   </header>
@@ -72,6 +77,65 @@
     </section>
   </main>
 
+  <!-- Modal de Sugestão de Notícias -->
+  <div id="suggest-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="modal-badge">Colaboração Cidadã</span>
+          <h2 id="modal-title" class="modal-title">Sugerir uma Reportagem</h2>
+        </div>
+        <button id="btn-close-modal" class="btn-close-modal" aria-label="Fechar janela">✕</button>
+      </div>
+
+      <p class="modal-description">
+        Conhece outra apuração relevante? Envie para avaliarmos a inclusão no dossiê. 
+        <strong>Critério estrito:</strong> apenas matérias publicadas por jornais ou revistas de grande circulação com link verificável.
+      </p>
+
+      <form id="suggest-form" name="sugestoes-noticias" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="sugestoes-noticias" />
+        <p class="hidden-field" style="display:none;"><label>Não preencha: <input name="bot-field" /></label></p>
+
+        <div class="form-group">
+          <label for="suggest-url">Link da Notícia (URL) <span class="required">*</span></label>
+          <input type="url" id="suggest-url" name="url" placeholder="https://g1.globo.com/... ou https://folha.uol.com.br/..." required />
+        </div>
+
+        <div class="form-group">
+          <label for="suggest-source">Veículo / Jornal <span class="required">*</span></label>
+          <input type="text" id="suggest-source" name="veiculo" placeholder="Ex: Folha de S.Paulo, Estadão, G1, UOL, Valor, etc." required />
+        </div>
+
+        <div class="form-group">
+          <label for="suggest-summary">Qual é o fato apurado? (Breve resumo) <span class="required">*</span></label>
+          <textarea id="suggest-summary" name="resumo" rows="3" placeholder="Resuma em 1 ou 2 frases o fato apurado pela reportagem..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="suggest-contact">Seu nome ou contato (opcional)</label>
+          <input type="text" id="suggest-contact" name="contato" placeholder="Seu nome ou e-mail (caso queira ser avisado)" />
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btn-cancel-modal" class="btn-modal-cancel">Cancelar</button>
+          <button type="submit" id="btn-submit-suggest" class="btn-modal-submit">
+            <span>Enviar Sugestão</span>
+            <span>↗</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Estado de Sucesso -->
+      <div id="suggest-success" class="modal-success" style="display:none;">
+        <div class="success-icon">✓</div>
+        <h3>Sugestão Enviada com Sucesso!</h3>
+        <p>Obrigado pela contribuição. Vamos analisar a reportagem e checar as fontes para incluir no site.</p>
+        <button id="btn-success-close" class="btn-modal-submit" style="margin-top: 1.25rem; width: 100%;">Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast de Notificação -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
@@ -80,6 +144,9 @@
     <div class="container">
       <p>Este site é um dossiê informativo independente para fundamentação do voto consciente.</p>
       <p>Todas as informações são acompanhadas de data, veículo e link direto para a fonte jornalística original.</p>
+      <p style="margin-top: 0.85rem;">
+        <button id="btn-footer-suggest" class="btn-suggest-link">💡 Tem uma sugestão de matéria séria? Clique aqui para enviar</button>
+      </p>
     </div>
   </footer>
 
