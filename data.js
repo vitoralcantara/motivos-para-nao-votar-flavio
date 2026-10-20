@@ -37,6 +37,22 @@ const topicsData = [
     quote: "PF apontou que senador foi cadastrado como usuário master em conta bancária de empresa de advogado investigado."
   },
   {
+    id: "cobrancas-vorcaro-filme-dark-horse",
+    title: "PF aponta cobranças de Flávio a banqueiro por repasses milionários para filme 'Dark Horse'",
+    category: "Investigações",
+    date: "12/09/2026",
+    sourceName: "Agência Brasil / EBC",
+    sourceUrl: "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/pf-aponta-cobrancas-de-flavio-vorcaro-por-filme-dark-horse",
+    bullets: [
+      "Relatórios da Polícia Federal no STF revelaram mensagens e áudios interceptados de Flávio cobrando Daniel Vorcaro (Banco Master) por atrasos em repasses.",
+      "Em áudio de setembro de 2025, o senador demonstrou preocupação com o cronograma e com compromissos financeiros internacionais com diretores e atores em Hollywood.",
+      "A apuração indica articulação de montante que chegava a até US$ 24 milhões (cerca de R$ 130 milhões) com o banqueiro para a cinebiografia.",
+      "Caso integra inquérito no STF (sob relatoria de André Mendonça) para investigar a origem e rota dos recursos por suspeitas de lavagem de dinheiro e evasão de divisas."
+    ],
+    fullContext: "Documentos da Polícia Federal anexados a inquérito no Supremo Tribunal Federal revelaram diálogos e áudios interceptados em que o senador Flávio Bolsonaro pressionava o empresário Daniel Vorcaro, dono do Banco Master, a regularizar transferências financeiras para a produção do longa 'Dark Horse'. O senador cobrava agilidade nos pagamentos para evitar quebras contratuais com profissionais internacionais da produção cinematográfica. O inquérito busca esclarecer se houve uso de empresas de fachada ou repasses irregulares para fins de lavagem de dinheiro e evasão de divisas no financiamento do projeto.",
+    quote: "Áudios interceptados pela PF registraram cobranças diretas do senador por repasses milionários a banqueiro."
+  },
+  {
     id: "caso-rachadinha-alerj",
     title: "Caso das 'rachadinhas' na Alerj: denúncia do MP-RJ por desvio de salários e anulação por vícios processuais",
     category: "Investigações",
